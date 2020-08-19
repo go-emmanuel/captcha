@@ -1,4 +1,5 @@
 // Copyright 2014 The Macaron Authors
+// Copyright 2020 the Emmanuel developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License"): you may
 // not use this file except in compliance with the License. You may obtain
@@ -19,14 +20,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
+	"github.com/go-emmanuel/emmanuel"
 	. "github.com/smartystreets/goconvey/convey"
-	"gopkg.in/macaron.v1"
 )
 
 func Test_Captcha(t *testing.T) {
 	Convey("Captch service", t, func() {
-		m := macaron.New()
+		m := emmanuel.New()
 		m.Use(cache.Cacher())
 		m.Use(Captchaer())
 		m.Get("/", func() {

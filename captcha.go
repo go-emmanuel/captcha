@@ -1,5 +1,6 @@
 // Copyright 2013 Beego Authors
 // Copyright 2014 The Macaron Authors
+// Copyright 2020 the Emmanuel developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License"): you may
 // not use this file except in compliance with the License. You may obtain
@@ -13,7 +14,7 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
-// Package captcha a middleware that provides captcha service for Macaron.
+// Package captcha a middleware that provides captcha service for Emmanuel.
 package captcha
 
 import (
@@ -23,9 +24,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
+	"github.com/go-emmanuel/emmanuel"
 	"github.com/unknwon/com"
-	"gopkg.in/macaron.v1"
 )
 
 var (
@@ -84,7 +85,7 @@ func (c *Captcha) CreateCaptcha() (string, error) {
 }
 
 // verify from a request
-func (c *Captcha) VerifyReq(req macaron.Request) bool {
+func (c *Captcha) VerifyReq(req emmanuel.Request) bool {
 	_ = req.ParseForm()
 	return c.Verify(req.Form.Get(c.FieldIdName), req.Form.Get(c.FieldCaptchaName))
 }
@@ -202,11 +203,11 @@ func NewCaptcha(opt Options) *Captcha {
 	}
 }
 
-// Captchaer is a middleware that maps a captcha.Captcha service into the Macaron handler chain.
+// Captchaer is a middleware that maps a captcha.Captcha service into the Emmanuel handler chain.
 // An single variadic captcha.Options struct can be optionally provided to configure.
 // This should be register after cache.Cacher.
-func Captchaer(options ...Options) macaron.Handler {
-	return func(ctx *macaron.Context, cache cache.Cache) {
+func Captchaer(options ...Options) emmanuel.Handler {
+	return func(ctx *emmanuel.Context, cache cache.Cache) {
 		cpt := NewCaptcha(prepareOptions(options))
 		cpt.store = cache
 

@@ -1,10 +1,10 @@
-module github.com/go-macaron/captcha
+module github.com/go-emmanuel/captcha
 
 go 1.12
 
 require (
-	github.com/go-macaron/cache v0.0.0-20190810181446-10f7c57e2196
-	github.com/smartystreets/goconvey v0.0.0-20190731233626-505e41936337
+	github.com/go-emmanuel/cache v0.0.0-20200819130936-f1d72bac08ad
+	github.com/go-emmanuel/emmanuel v0.0.0-20200816144307-4a9e932cad8a
+	github.com/smartystreets/goconvey v1.6.4
 	github.com/unknwon/com v0.0.0-20190804042917-757f69c95f3e
-	gopkg.in/macaron.v1 v1.3.4
 )
